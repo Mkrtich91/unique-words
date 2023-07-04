@@ -122,13 +122,13 @@ namespace UniqueWords
                 int separatorIndex = text.IndexOf(separator, startIndex);
                 if (separatorIndex == -1)
                 {
-                    string lastWord = text[startIndex..].Trim();
+                    string lastWord = text[startIndex..];
                     uniqueWords.Add(lastWord);
                     break;
                 }
                 else
                 {
-                    string word = text[startIndex..separatorIndex].Trim();
+                    string word = text[startIndex..separatorIndex];
                     uniqueWords.Add(word);
                     startIndex = separatorIndex + 1;
                 }
