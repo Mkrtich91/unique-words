@@ -113,22 +113,21 @@ namespace UniqueWords
         /// </summary>
         public static ICollection<string> GetUniqueWordsCollection(string text, char separator)
         {
-            text = text.Replace("\r\n", " ", StringComparison.InvariantCulture).ToString(CultureInfo.InvariantCulture).Trim();
+            text = text.Replace(Environment.NewLine, " ", StringComparison.InvariantCulture).ToString(CultureInfo.InvariantCulture).Trim();
             List<string> uniqueWords = new List<string>();
             int startIndex = 0;
-
             while (startIndex < text.Length)
             {
                 int separatorIndex = text.IndexOf(separator, startIndex);
                 if (separatorIndex == -1)
                 {
-                    string lastWord = text[startIndex..];
+                    string lastWord = text[startIndex..].Trim();
                     uniqueWords.Add(lastWord);
                     break;
                 }
                 else
                 {
-                    string word = text[startIndex..separatorIndex];
+                    string word = text[startIndex..separatorIndex].Trim();
                     uniqueWords.Add(word);
                     startIndex = separatorIndex + 1;
                 }
